@@ -1,0 +1,19 @@
+.numOfCart{
+    width: 17px ;
+    height: 17px;
+    background-color: #f08804;
+    border-radius: 50%;
+    position: absolute;
+    top:-5px;
+    left: 7px;
+    color: #fff;
+    font-size: 11px;
+ 
+}
+i{
+    position: relative;
+    font-size: 19px;
+}
+.nav-link{
+    font-size: 17px;
+}

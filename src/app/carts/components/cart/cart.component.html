@@ -1,0 +1,40 @@
+<div class="container-fluid p-5  ">
+    <div>
+        <h2>Shopping Cart</h2>
+        <div class="d-flex justify-content-between align-items-center">
+            <p>You have <span class="text-danger p-0 m-0">{{lengthOfcartArray}}</span> item in your cart</p>
+            <button class="btn btn-danger m-1 mb-2" (click)="clearShoppingCart()">Clear shopping cart</button>
+
+        </div>
+        <div class="col-12 d-flex flex-column">
+            
+            <div class="d-flex flex-md-row flex-column col-12 justify-content-center align-items-center border border-1 my-1 py-3" *ngFor="let item of cartProductsArray; let i = index">
+            <div class="col-md-1 col-12">          
+                <button class="btn-cancel p-1 " (click)="deleteProduct(i)"><i class="fa-solid fa-xmark btn" ></i></button>
+            </div>
+      <div class="col-md-2 col-12 d-flex justify-content-center"> 
+          <img src="{{item.image}}" alt="product" class="w-50 align-content-end ">
+      </div> 
+           
+                <div class="col-md-8 col-12">
+              <div class="d-flex justify-content-between">
+                <h5 class="">{{item.title}}</h5>   
+                <strong class="ms-2">${{item.price}}</strong>
+              </div>   
+              <div class="quantity">
+                <button class="btn text-primary" (click)="addAmount(i)">+</button>
+                <input class="form-control"  type="number" placeholder="{{item.quantity.quantity}}" (change)="changeAmount()" [(ngModel)]="item.quantity.quantity"  min="1">
+                <button class="btn text-danger" (click)="minsAmount(i)">-</button>
+            </div> 
+              <!-- <p>Qty : <input type="number" placeholder="{{item.quantity.quantity}}" [(ngModel)]="item.quantity.quantity" min="1"> </p> -->
+                </div>
+               
+            </div>
+
+            <div class="total-sec align-self-end me-4">
+                <strong> Total :  ${{totalPrice}}</strong>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,28 @@
+input{
+    width: 70px !important;
+    margin-right: 10px;
+}
+ngb-rating {
+    color: #f59e0b;
+    font-size: 1.5rem;
+    margin: 0px 5px;
+ }
+ #my-popup{
+	Width: 350px;
+	Height: 150px;
+	Background: rgba(106, 211, 137, 0.685);
+	Box-sizing: border-box; /* for inside padding */
+	Padding: 10px;
+
+	/* for center */
+	Position:absolute;
+	top:50%;
+	left:50%;
+	Transform: translate(-50%,-50%);	
+}
+.circle{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border: 5px solid rgb(59, 175, 94);
+}

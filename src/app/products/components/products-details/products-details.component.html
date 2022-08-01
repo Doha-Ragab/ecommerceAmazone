@@ -1,0 +1,29 @@
+<div class="container ms-4 mt-5">
+<div class="row justify-content-between align-items-center" *ngIf="!loading">
+    <div class="col-3 d-flex justify-content-center align-items-center  " >
+        <img src="{{data.image}}" alt="products" class="img-fluid">
+    </div>
+    <div class="col-9" >
+        <ul>
+            <li class="mb-3"><strong>Title : </strong>{{data.title}}</li>
+            <li class="mb-3"><strong>Category : </strong>{{data.category}}</li>
+            <li class="mb-3"><strong>Description : </strong>{{data.description}}</li>
+            <li class="mb-3"><strong>Rate : </strong><ngb-rating [(rate)]="data.rating.rate" [max]="5" [readonly]="true"></ngb-rating>({{data.rating.rate}})</li>
+            <li class="mb-3"><strong>price : </strong>${{data.price}}</li>
+            <li class="mb-3"><strong>Qty : </strong><input [(ngModel)]="amount" type="number" min="1" name="" id="" placeholder="0"></li>
+            <li class="mb-3"><button class="px-3 py-1 btn btn-danger" (click)="addToCart(data,amount)">Add to cart</button></li>
+
+        </ul>
+
+    </div>
+</div>
+<app-spinner *ngIf="loading"></app-spinner>
+<div id="my-popup" class="d-flex flex-column justify-content-center align-items-center p-2" *ngIf="added">
+<div class="circle d-flex justify-content-center align-items-center">
+    <i class="fa-solid fa-check text-white fs-3"></i>
+</div>
+<p class="my-2 text-white">Added To Cart</p>
+
+</div>
+	
+</div>

@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <div class="container-fluid px-4">
+      
+      <a class="navbar-brand" routerLink="products" >
+        <img src="../../../assets/Amazon_logo.svg.webp" width="100" height="32" class="d-inline-block mt-2" alt="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="products" routerLinkActive="text-light">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="cart" routerLinkActive="text-light"><i class="fa-solid fa-cart-shopping mx-1 "><div class="numOfCart d-flex justify-content-center align-items-center">{{ cartCount}}</div></i>Cart</a>
+          </li>
+         
+        </ul>
+       
+      </div>
+    </div>
+  </nav>

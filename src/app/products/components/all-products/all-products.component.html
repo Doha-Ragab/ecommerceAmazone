@@ -1,0 +1,120 @@
+<div class="row justify-content-between align-items-start ">
+    <div class="categoreies col-3 col-lg-2 mt-5 p-2" *ngIf="!loading" >
+        <h5 class="ms-2">Categories</h5>
+        <ul class="mt-3" (click)="filterCategory($event)">
+            <li>All</li>
+            <li class="text-capitalize" *ngFor="let cate of AllCateArray" > <a >{{cate}}</a>
+                </li>
+        </ul>
+        <hr>
+        <div class="filter  mt-3 p-2 "  *ngIf="!loading">
+            <h6 class="ms-2">Price</h6>
+            <div class="d-flex flex-column ps-3"> 
+                <label for="up50" >Up to 59 $ <input (click)="filterByPrice($event)" class="inp" type="radio" id="up50" value="50"></label>
+                <label for="up100" >50 to 100 $ <input (click)="filterByPrice($event)" class="inp" type="radio" id="up100" value="100"></label>
+                <label for="up500" >100 to 500 $ <input (click)="filterByPrice($event)" class="inp" type="radio" id="up500" value="500"></label>
+                <label for="up1000" >500 to 1000 $ <input (click)="filterByPrice($event)" class="inp" type="radio" id="up1000" value="1000"></label>
+            </div>
+        </div>
+        <hr>
+        <div class="filter  mt-3 p-2 "  *ngIf="!loading">
+            <h6 class="ms-2">Rating</h6>
+            <div class="d-flex flex-column ps-3"> 
+               
+                <label for="4" >
+                    <input (click)="filterByRating($event)" class="inp" type="radio" id="4" value="4">
+                    <ngb-rating [(rate)]="currentRate4" [max]="5" [readonly]="true"></ngb-rating> & Up
+                </label>   
+                <label for="3" >
+                    <input (click)="filterByRating($event)" class="inp" type="radio" id="3" value="3">
+                    <ngb-rating [(rate)]="currentRate3" [max]="5" [readonly]="true"></ngb-rating> & Up
+                </label>
+                <label for="2" >
+                    <input (click)="filterByRating($event)" class="inp" type="radio" id="2" value="2">
+                    <ngb-rating [(rate)]="currentRate2" [max]="5" [readonly]="true"></ngb-rating> & Up
+                </label>      
+                <label for="1" >
+                    <input (click)="filterByRating($event)" class="inp" type="radio" id="1" value="1">
+                    <ngb-rating [(rate)]="currentRate1" [max]="5" [readonly]="true"></ngb-rating> & Up
+                </label>      
+            </div>
+        </div>
+    </div>
+
+    <div class="box mt-5 col-9 p-2 col-lg-10" *ngIf="!show">
+        <div class="row justify-content-between mx-0" *ngIf="!loading">
+            <div   class=" product col-lg-3 col-md-4 col-sm-12 my-3" *ngFor="let item of productsArray; let i=index" routerLink="/details/{{item.id}}" >
+                <div class="items p-3 d-flex justify-content-start flex-column">
+                  <div class="img-product pb-3">
+                 <img src="{{item.image}}" alt="product" class="img-fluid">
+                </div>  
+                    <div class="body">       
+                              
+                    <h2>{{item.title}}</h2>
+                    <p class="des">{{item.description}}</p>
+                    <div class=" d-flex justify-content-center align-items-center ">
+                         <div>
+                           <ng-template #t let-fill="fill">
+                             <span class="star" [class.full]="fill === 100">
+                             <span class="half" [style.width.%]="fill">&#9733;</span>&#9734;
+                             </span>
+                           </ng-template>
+                         <ngb-rating [(rate)]="item.rating.rate " [starTemplate]="t" [readonly]="true" [max]="5">  </ngb-rating>
+                       </div>       
+                          <p class="rate ms-2">({{item.rating.rate}})</p>            
+                    </div>
+                    <p class="price py-1">${{item.price}}</p>
+                    <div class="ship d-flex align-items-center ">
+                            <img src="../../../../assets/Prime-tag-.png" class="img-fluid w-25 me-1" alt="prime">
+                            <span>FREE Next-day Delivery</span>
+                    </div>
+                    <!-- <div class="d-flex justify-content-center col">
+                        <button class="btn mb-2 w-100" (click)="addToCart(item)"> Add To Cart</button>
+                    </div> -->
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+   
+    <div class="box mt-5 col-10 p-2" *ngIf="show">
+        <div class="row justify-content-between mx-0" *ngIf="!loading">
+            <div   class=" product col-lg-3 col-md-4 col-sm-12 my-3" *ngFor="let item of ar; let i=index" routerLink="/details/{{item.id}}" >
+                <div class="items p-3 d-flex justify-content-start flex-column">
+                  <div class="img-product pb-3">
+                 <img src="{{item.image}}" alt="product" class="img-fluid">
+                </div>  
+                    <div class="body">       
+                              
+                    <h2>{{item.title}}</h2>
+                    <p class="des">{{item.description}}</p>
+                    <div class=" d-flex justify-content-center align-items-center ">
+                         <div>
+                           <ng-template #t let-fill="fill">
+                             <span class="star" [class.full]="fill === 100">
+                             <span class="half" [style.width.%]="fill">&#9733;</span>&#9734;
+                             </span>
+                           </ng-template>
+                         <ngb-rating [(rate)]="item.rating.rate " [starTemplate]="t" [readonly]="true" [max]="5">  </ngb-rating>
+                       </div>       
+                          <p class="rate">({{item.rating.rate}})</p>            
+                    </div>
+                    <p class="price py-1">${{item.price}}</p>
+                    <div class="ship d-flex align-items-center ">
+                            <img src="../../../../assets/Prime-tag-.png" class="img-fluid w-25 me-1" alt="prime">
+                            <span>FREE Next-day Delivery</span>
+                    </div>
+                    <!-- <div class="d-flex justify-content-center col">
+                        <button class="btn mb-2 w-100" (click)="addToCart(item)"> Add To Cart</button>
+                    </div> -->
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>   
+    
+    <div class="text-center w-100" *ngIf="loading">
+        <app-spinner></app-spinner>
+    </div>
+</div>
+
